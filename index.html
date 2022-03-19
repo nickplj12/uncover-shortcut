@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>unc0ver</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <!--stolen from stack overflow-->
+</head>
+<body>
+<button onclick="destroy()">Execute JavaScript code (Destroy RLM)</button>
+
+<script>
+console.log('test');
+
+function destroy() {
+  console.log('RLM-Destroyer 1.0.0');
+}
+</script>
+
+<br>
+    <code><div class="output"></div></code>
+    <script language="javascript">
+        var realConsoleLog = console.log;
+        console.log = function () {
+            var message = [].join.call(arguments, " ");
+            $(".output").text(message);
+            realConsoleLog.apply(console, arguments);
+        };
+    </script>
+</body>
+</html>
